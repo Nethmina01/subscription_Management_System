@@ -10,6 +10,7 @@ import authRouter from "./routes/auth.routes.js";
 import connectToDatabase from "./database/mongodb.js"
 import errorMiddleware from "./middlewares/error.middleware.js";
 import cookieParser from "cookie-parser";
+import arcjetMiddleware from "./middlewares/arcjet.middleware.js";
 
 
 const app =express();
@@ -23,6 +24,8 @@ app.use(express.urlencoded({ extended: false }));
 
 // Parses cookies from the incoming request headers and makes them available under req.cookies
 app.use(cookieParser());
+
+app.use(arcjetMiddleware)
 
 
 //api/v1/auth/sign-up
