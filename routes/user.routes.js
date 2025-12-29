@@ -8,7 +8,7 @@ const userRouter = Router();
 //GET/users->get all users
 // GET/users/:id -> get all users by id
 
-userRouter.get('/', getUsers);
+userRouter.get('/', authorize, getUsers);
 
 //add authorization middleware to add access level 
 userRouter.get('/:id', authorize, getUser);
