@@ -34,3 +34,14 @@ export const getUser = async (req, res, next) => {
         next(error);
     }
 };
+
+/*
+| Problem                  | Status    |
+| ------------------------ | --------- |
+| App crashing             | ✅ Fixed   |
+| IDOR vulnerability       | ✅ Fixed   |
+| Access without JWT       | ✅ Blocked |
+| Access other user’s data | ✅ Blocked |
+| Password exposure        | ✅ Removed |
+| Middleware mismatch      | ✅ Safe    |
+*/
