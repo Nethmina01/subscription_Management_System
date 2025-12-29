@@ -26,6 +26,8 @@ const userSchema = new mongoose.Schema({
 
 );
 
-const User =mongoose.model('User', userSchema);
+// Avoid redefining the User model on reload by reusing an existing compiled model
+
+const User =mongoose.models.User || mongoose.model('User', userSchema);
 
 export default User;
