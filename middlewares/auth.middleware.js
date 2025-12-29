@@ -1,5 +1,5 @@
 import jwt from 'jsonwebtoken';
-import User from '../models/User.model.js';
+import User from '../models/user.model.js';
 
 
 import {JWT_SECRET } from '../config/env.js';
@@ -29,8 +29,9 @@ const authorize = async (req, res, next)=>{
         next();
 
     } catch(error){
-        res.ststus(401).json({message:'Unauthorized', error: error.message });
+        res.status(401).json({message:'Unauthorized', error: error.message });
     }
     
 }
 export default authorize;
+
