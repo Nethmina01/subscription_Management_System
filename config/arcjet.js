@@ -1,3 +1,5 @@
+//used email = devlopment1@
+
 import { shield } from "@arcjet/node";
 import arcjet, {detectBot, tokenBucket} from "@arcjet/node";
 import {ARCJET_KEY} from './env.js'

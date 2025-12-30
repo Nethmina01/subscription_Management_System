@@ -30,7 +30,10 @@ app.use(cookieParser());
 
 //api/v1/auth/sign-up
 app.use('/api/v1/auth',authRouter);
+
+//Any request starting with /api/v1/user goes to user.routes.js
 app.use('/api/v1/user',userRouter);
+
 app.use('/api/v1/subscription',subscriptionRouter);
 
 app.use(errorMiddleware);
