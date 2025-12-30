@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { getUser, getUsers } from "../controllers/user.controller.js";
-
+import { getUser } from "../controllers/user.controller.js";
+//import {getUsers} from "../controllers/user.controller.js";
 import authorize from "../middlewares/auth.middleware.js";
 
 const userRouter = Router();
@@ -8,7 +8,15 @@ const userRouter = Router();
 //GET/users->get all users
 // GET/users/:id -> get all users by id
 
-userRouter.get('/', authorize, getUsers);
+
+//userRouter.get('/', authorize, getUsers); #this will remove because this make Broken Access Control (Any User can see all users details)
+
+// ✅ Get current logged-in user (BEST PRACTICE)
+userRouter.get("/me", authorize, (req, res) => {
+    const user = req.user.toObject();
+    delete user.password;
+    res.status(200).json({ success: true, data: user });
+});
 
 //add authorization middleware to add access level 
 userRouter.get('/:id', authorize, getUser);
