@@ -14,7 +14,13 @@ const authorize = async (req, res, next)=>{
             token = req.headers.authorization.split(' ')[1];
         }
         
-        if(!token) return res.status(401).json({message:'Unauthorized'});
+        //commented the if(!token) return res.status(401).json({message:'Unauthorized'}); and added below line ad added 
+        //if(!token) return res.status(401).json({message:'Unauthorized'});
+        if (req.method === 'OPTIONS') {
+            return next();
+        }
+
+
 
         const decoded =jwt.verify(token, JWT_SECRET);
 

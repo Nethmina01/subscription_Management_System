@@ -28,6 +28,23 @@ app.use(cookieParser());
 
 //app.use(arcjetMiddleware)
 
+//add code from ChatGPT to connect front end and backend
+import cors from 'cors';
+//import cookieParser from 'cookie-parser';
+
+app.use(cookieParser());
+
+app.use(cors({
+  origin: 'http://localhost:3000',
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+}));
+
+// 👇 VERY IMPORTANT
+app.options('*', cors());
+
+
 
 //api/v1/auth/sign-up
 app.use('/api/v1/auth',authRouter);
